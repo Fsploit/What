@@ -98,8 +98,6 @@ local Shop = Tab2:NewSection("Shop")
 
 local Visual = Tab3:NewSection("Visual")
 
-local Credits = Tab:NewSection("Made by fsploit. auto parry by aries TwT")
-
 local Credits = Tab4:NewSection("Made By Fsploit or Dwimback69. On Discord")
 
 local Credits = Tab4:NewSection("join our discord. discord.gg/exploitx")
