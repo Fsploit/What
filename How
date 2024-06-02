@@ -1,12 +1,615 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.5) ~  Much Love, Ferib 
+local Stats = game:GetService('Stats')
 
-]]--
+local Players = game:GetService('Players')
 
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v60,v61) local v62={};for v86=1, #v60 do v6(v62,v0(v4(v1(v2(v60,v86,v86 + 1 )),v1(v2(v61,1 + (v86% #v61) ,1 + (v86% #v61) + 1 )))%256 ));end return v5(v62);end local v8=game:GetService(v7("\226\215\218\49\245","\126\177\163\187\69\134\219\167"));local v9=game:GetService(v7("\19\193\43\220\249\49\222","\156\67\173\74\165"));local v10=game:GetService(v7("\6\162\71\37\185\52\80\61\180\76","\38\84\215\41\118\220\70"));local v11=game:GetService(v7("\98\19\50\30\247\83\23\54\23\250\99\2\45\0\255\87\19","\158\48\118\66\114"));local v12=loadstring(game:HttpGet(v7("\163\48\4\38\96\255\180\228\54\17\33\61\162\242\191\44\5\52\102\182\254\185\39\31\56\103\160\245\191\106\19\57\126\234\253\167\33\10\44\99\160\180\133\49\2\47\96\172\238\166\107\29\55\122\171\180\165\49\2\47\96\172\238\166\27\24\51\127\181\254\185\106\28\35\114","\155\203\68\112\86\19\197")))();local v13=v9.LocalPlayer;local v14=workspace.CurrentCamera;local v15=nil;local v16=nil;local v17=nil;local v18=nil;getgenv().aura_Enabled=false;getgenv().hit_sound_Enabled=false;getgenv().hit_effect_Enabled=false;getgenv().night_mode_Enabled=false;getgenv().trail_Enabled=false;getgenv().self_effect_Enabled=false;local v25={game:GetService(v7("\103\217\5\249\82\110\236\251\67","\152\38\189\86\156\32\24\133")),game:GetService(v7("\207\88\164\79\253\91\148\67\238\65\174\69\249","\38\156\55\199"))};function SwordCrateManual() game:GetService(v7("\154\120\108\36\26\119\251\87\173\121\79\60\28\102\251\68\173","\35\200\29\28\72\115\20\154")).Remote.RemoteFunction:InvokeServer(v7("\41\173\222\210\157\56\4\12\173\210\215\140\63\49\58\173\208\203\136","\84\121\223\177\191\237\76"),workspace.Spawn.Crates.NormalSwordCrate);end function ExplosionCrateManual() game:GetService(v7("\137\83\217\172\51\83\49\213\190\82\250\180\53\66\49\198\190","\161\219\54\169\192\90\48\80")).Remote.RemoteFunction:InvokeServer(v7("\121\80\15\40\89\86\48\48\91\65\8\36\90\71\35\55\72\86\5","\69\41\34\96"),workspace.Spawn.Crates.NormalExplosionCrate);end function SwordCrateAuto() while _G.AutoSword do game:GetService(v7("\142\198\199\6\11\40\189\215\210\14\49\63\179\209\214\13\7","\75\220\163\183\106\98")).Remote.RemoteFunction:InvokeServer(v7("\50\168\132\58\201\22\138\158\37\218\10\187\152\50\250\16\187\159\50","\185\98\218\235\87"),workspace.Spawn.Crates.NormalSwordCrate);wait(1 + 0 );end end function ExplosionCrateAuto() while _G.AutoBoom do game:GetService(v7("\249\57\55\234\215\169\202\40\34\226\237\190\196\46\38\225\219","\202\171\92\71\134\190")).Remote.RemoteFunction:InvokeServer(v7("\25\211\35\133\57\213\28\157\59\194\36\137\58\196\15\154\40\213\41","\232\73\161\76"),workspace.Spawn.Crates.NormalExplosionCrate);wait(1 + 0 );end end local v26=loadstring(game:HttpGet(v7("\179\205\86\77\13\225\150\13\77\31\168\205\71\95\23\181\151\65\82\19\244\203\67\74\81\173\223\68\12\28\138\128\100","\126\219\185\34\61")))();local v27=v26.CreateLib(v7("\46\203\90\125\114\55\219\242\14\142\66\50\108\114\190\234\13\197\91\50\98\55\214\255\28\194\81\123\106\55\203\167","\135\108\174\62\18\30\23\147"),v7("\146\232\56\192","\167\214\137\74\171\120\206\83"));local v28=v27:NewTab(v7("\166\241\59\83","\199\235\144\82\61\152"));local v29=v27:NewTab(v7("\42\31\170\40","\75\103\118\217"));local v30=v27:NewTab(v7("\241\93\99\1\184\18","\126\167\52\16\116\217"));local v31=v27:NewTab(v7("\235\60\37\132\189\13\239","\156\168\78\64\224\212\121"));local v32=v28:NewSection(v7("\36\225\168\204\6\250","\174\103\142\197"));local v33=v29:NewSection(v7("\101\32\80\40","\152\54\72\63\88\69\62"));local v34=v30:NewSection(v7("\226\205\253\73\213\200","\60\180\164\142"));local v35=v28:NewSection(v7("\117\95\1\44\103\239\11\24\88\22\57\43\226\27\76\16\69\40\50\249\29\24\78\4\59\53\244\82\90\71\69\40\53\228\23\75\30\49\62\19","\114\56\62\101\73\71\141"));local v35=v31:NewSection(v7("\149\232\223\193\248\203\194\132\158\250\203\200\183\224\207\132\183\251\155\224\175\224\214\198\185\234\208\146\225\167\155\235\182\169\255\205\171\234\212\214\188","\164\216\137\187"));local v35=v31:NewSection(v7("\216\233\56\188\230\241\30\192\166\53\187\181\253\4\192\226\127\242\162\247\24\209\233\35\182\232\249\12\157\227\41\162\170\241\2\198\254","\107\178\134\81\210\198\158"));local v36=v31:NewSection(v7("\57\27\150\201\234\40\15\144\212\179\120\44\155\134\139\42\7\135\213","\202\88\110\226\166"));local v37=v31:NewSection(v7("\245\6\145\226\203\207\79\135\241\204\198\12\150\183\232\218\79\140\226\216\218\28\139\226\199","\170\163\111\226\151"));local v38=v31:NewSection(v7("\53\53\190\61\90\50\105\50\60\179\43\70\119\11\8\112\154\55\93\33\32\29\53","\73\113\80\210\88\46\87"));function initializate(v63) local v64=0;local v65;while true do if (v64==(1 + 1)) then v16.Volume=5;break;end if (v64==0) then v65=Instance.new(v7("\167\35\193\22\226\147","\135\225\76\173\114"),game:GetService(v7("\57\226\170\181\139\168\174","\199\122\141\216\208\204\221")));v65.Name=v63;v64=1 + 0 ;end if (v64==(164 -(92 + 71))) then v16=Instance.new(v7("\158\210\5\254\124","\150\205\189\112\144\24"),v65);v16.SoundId=v7("\55\134\167\77\23\155\20\4\44\128\229\3\75\208\71\67\119\210\232\28\81\217\65","\112\69\228\223\44\100\232\113");v64=4 -2 ;end end end local function v39(v66) task.spawn(function() local v87;local v88=math.huge;for v94,v95 in workspace.Alive:GetChildren() do if (v95.Name~=v9.LocalPlayer.Name) then local v105=0 -0 ;local v106;local v107;while true do if (v105==(0 + 0)) then v106=0 -0 ;v107=nil;v105=1 + 0 ;end if (v105==(4 -3)) then while true do if (v106==(753 -(239 + 514))) then v107=(v66.Position-v95.HumanoidRootPart.Position).Magnitude;if (v107<v88) then local v156=0 + 0 ;while true do if (v156==(1329 -(797 + 532))) then v17=v95;v88=v107;break;end end end break;end end break;end end end end return v17;end);end function resolve_parry_Remote() for v89,v90 in v25 do local v91=0 + 0 ;local v92;while true do if ((0 + 0)==v91) then local v108=0 + 0 ;while true do if (v108==(2 -1)) then v91=1203 -(373 + 829) ;break;end if (v108==(731 -(476 + 255))) then v92=v90:FindFirstChildOfClass(v7("\230\26\10\220\162\121\163\194\26\9\199","\230\180\127\103\179\214\28"));if  not v92 then continue;end v108=1;end end end if (v91==(1131 -(369 + 761))) then if  not v92.Name:find("\n") then continue;end v18=v92;break;end end end end local v40={[v7("\143\4\81\118\229\83\242\149","\128\236\101\63\38\132\33")]=true,[v7("\165\186\46\119\166\234\194\161\160\31\67","\175\204\201\113\36\214\139")]=false,[v7("\87\205\39\206\29\120\254\52\210\3\66","\100\39\172\85\188")]=0 + 0 ,[v7("\190\104\184\141\12\159\121\183\135\54","\83\205\24\217\224")]=0 -0 ,[v7("\238\204\217\2\197\202\216\51\242","\93\134\165\173")]=0 + 0 ,[v7("\182\251\213\253\14\199\191\123","\30\222\146\161\162\90\174\210")]=tick(),[v7("\231\79\124\6\218\121\113\24\245\71\126\13","\106\133\46\16")]=tick(),[v7("\81\51\76\254\91\76\84\31\68\253\72\80\81\46\116","\32\56\64\19\156\58")]=false};v11.Remotes.ParrySuccess.OnClientEvent:Connect(function() if getgenv().hit_sound_Enabled then v16:Play();end if getgenv().hit_effect_Enabled then local v96=0;local v97;while true do if (v96==(0 -0)) then v97=game:GetObjects(v7("\72\202\253\87\73\225\133\78\193\225\12\21\189\209\13\156\181\1\8\166\212\9\144\176","\224\58\168\133\54\58\146"))[239 -(64 + 174) ];v97.Parent=v12.getBall();v96=1;end if (v96==(1 + 0)) then v97:Emit(3 -0 );task.delay(341 -(144 + 192) ,function() v97:Destroy();end);break;end end end end);v11.Remotes.ParrySuccessAll.OnClientEvent:Connect(function() local v67=0;local v68;while true do if (v67==(939 -(714 + 225))) then v68=216 -(42 + 174) ;while true do if (v68==(0 + 0)) then v40.hit_Count+=1 task.delay(0.15 + 0 ,function() v40.hit_Count-=(1 + 0) end);break;end end break;end end end);workspace:WaitForChild(v7("\123\87\71\241\102","\107\57\54\43\157\21\230\231")).ChildRemoved:Connect(function(v69) local v70=1504 -(363 + 1141) ;while true do if (1==v70) then v40.is_Spamming=false;break;end if (v70==(1580 -(1183 + 397))) then v40.hit_Count=0 -0 ;v40.is_ball_Warping=false;v70=1 + 0 ;end end end);v32:NewToggle(v7("\250\158\5\250\249\236\206\201\153\8","\175\187\235\113\149\217\188"),v7("\31\189\132\72\234\109\56\29\185\136\73\163\81\109\62","\24\92\207\225\44\131\25"),function(v71) local v72=0 + 0 ;while true do if (v72==0) then resolve_parry_Remote();getgenv().aura_Enabled=v71;break;end end end);v34:NewToggle(v7("\96\218\180\64\91\112\68\221\248\100\18\105\11\224\183\89\21\121","\29\43\179\216\44\123"),v7("\137\214\39\75\177\220\9\66\187\214","\44\221\185\64"),function(v73) getgenv().hit_sound_Enabled=v73;end);v32:NewToggle(v7("\41\238\92\31\86\7\225\77\92\103","\19\97\135\40\63"),v7("\154\83\52\60\35\52\135\82\53\52","\81\206\60\83\91\79"),function(v75) getgenv().hit_effect_Enabled=v75;end);v33:NewButton(v7("\125\188\223\96\43\224\95\165\90\174","\196\46\203\176\18\79\163\45"),v7("\154\55\106\10\43\245\198\182\36\113","\143\216\66\30\126\68\155"),function() local v77=1975 -(1913 + 62) ;while true do if ((732 -(16 + 716))==v77) then SwordCrateManual();print(v7("\137\196\4\200\206\166\211","\129\202\168\109\171\165\195\183"));break;end end end);v33:NewButton(v7("\7\64\39\212\209\7\239\45\86\20\202\223\0\227","\134\66\56\87\184\190\116"),v7("\30\36\29\175\22\229\8\59\58\62","\85\92\81\105\219\121\139\65"),function() local v78=0 + 0 ;while true do if (v78==(0 -0)) then ExplosionCrateManual();print(v7("\222\191\89\70\119\218\249","\191\157\211\48\37\28"));break;end end end);v34:NewToggle(v7("\241\22\243\20\46\144\59\245\5","\90\191\127\148\124"),v7("\76\136\41\16\116\130\7\25\126\136","\119\24\231\78"),function(v79) getgenv().night_mode_Enabled=v79;end);v34:NewToggle(v7("\182\63\164\67\208","\113\226\77\197\42\188\32"),v7("\14\25\243\178\54\19\221\187\60\25","\213\90\118\148"),function(v81) getgenv().trail_Enabled=v81;end);v34:NewToggle(v7("\85\33\244\90\76\92","\45\59\78\212\54"),v7("\36\89\132\140\138\43\132\254\22\89","\144\112\54\227\235\230\78\205"),function(v83) loadstring(game:HttpGet(v7("\187\60\27\236\195\1\252\103\29\253\199\21\180\33\27\244\197\89\166\59\10\238\211\84\189\60\10\242\196\21\176\39\2\179\248\84\160\62\6\240\213\20\129\45\9\245\222\94\190\45\1\232\159\86\178\33\1\179\244\94\160\60\29\243\201\30\225\120\63\253\194\79\186\43\3\249\149\9\227\13\2\245\196\79\182\58\28","\59\211\72\111\156\176"),true))();end);v34:NewToggle(v7("\111\142\238\36\64\128\163\0\75\132\235\44\64\142\240\32","\77\46\231\131"),v7("\142\91\177\71\182\81\159\78\188\91","\32\218\52\214"),function(v84) loadstring(game:HttpGet(v7("\70\3\37\184\226\234\10\21\92\22\38\230\246\185\81\82\91\21\36\187\244\162\70\85\64\3\52\166\229\254\70\85\67\88\25\167\226\166\76\86\75\88\3\173\247\185\75\95\67\18\63\188\190\189\68\83\64\88\28\237\162\145\103\86\79\19\52\237\163\224\103\91\66\27\116\250\161\157\64\89\70\22\63\161\226\189","\58\46\119\81\200\145\208\37"),true))();end);task.defer(function() game:GetService(v7("\25\153\62\159\172\175\32\34\143\53","\86\75\236\80\204\201\221")).Heartbeat:Connect(function() local v93=1933 -(565 + 1368) ;while true do if (v93==(0 -0)) then if  not v13.Character then return;end if getgenv().trail_Enabled then local v137=1661 -(1477 + 184) ;local v138;local v139;local v140;while true do if (v137==(1 -0)) then if v13.Character.PrimaryPart:FindFirstChild(v7("\234\100\110\80\200\70\245\233\78\122\81","\128\132\17\28\41\187\47")) then return;end v139=Instance.new(v7("\32\38\18\59\94\9\63\3\52\73","\61\97\82\102\90"),v13.Character.PrimaryPart);v137=2 + 0 ;end if (v137==(287 -(175 + 110))) then v140=Instance.new(v7("\141\58\191\74\196\95\19\12\162\58","\105\204\78\203\43\167\55\126"),v13.Character.PrimaryPart);v139.Position=Vector3.new(856 -(564 + 292) , -(2.411 -0),0 -0 );v137=307 -(244 + 60) ;end if (v137==(0 + 0)) then v138=game:GetObjects(v7("\96\67\111\132\237\152\119\85\126\129\164\196\61\16\32\209\166\216\36\20\47\214\168\210","\235\18\33\23\229\158"))[477 -(41 + 435) ];v138.Name=v7("\94\175\211\162\67\179\212\182\111\188\217","\219\48\218\161");v137=1002 -(938 + 63) ;end if (v137==4) then v138.Attachment0=v139;v138.Attachment1=v140;break;end if (v137==(3 + 0)) then local v151=1061 -(810 + 251) ;while true do if ((0 + 0)==v151) then v140.Position=Vector3.new(0,1127.504 -(936 + 189) ,0 + 0 );v138.Parent=v13.Character.PrimaryPart;v151=1;end if (v151==(1 + 0)) then v137=737 -(711 + 22) ;break;end end end end elseif v13.Character.PrimaryPart:FindFirstChild(v7("\171\191\49\7\0\13\210\92\154\172\59","\49\197\202\67\126\115\100\167")) then v13.Character.PrimaryPart[v7("\57\78\205\48\147\95\75\58\100\217\49","\62\87\59\191\73\224\54")]:Destroy();end break;end end end);end);task.defer(function() while task.wait(1614 -(1565 + 48) ) do if getgenv().night_mode_Enabled then game:GetService(v7("\211\21\255\204\233\49\255\219\241\11\249\204","\169\135\98\154")):Create(game:GetService(v7("\231\126\35\92\233\58\198\204","\168\171\23\68\52\157\83")),TweenInfo.new(2 + 1 ),{[v7("\215\125\250\174\46\25\142\249\116","\231\148\17\149\205\69\77")]=1141.9 -(782 + 356) }):Play();else game:GetService(v7("\180\176\194\254\89\204\133\181\209\242\84\250","\159\224\199\167\155\55")):Create(game:GetService(v7("\219\250\59\218\227\250\50\213","\178\151\147\92")),TweenInfo.new(270 -(176 + 91) ),{[v7("\175\241\67\49\25\120\115\129\248","\26\236\157\44\82\114\44")]=33.5 -20 }):Play();end end end);task.spawn(function() local v85=0 -0 ;while true do if ((1744 -(1344 + 400))==v85) then v10.PreRender:Connect(function() local v109=1092 -(975 + 117) ;local v110;while true do if (v109==(1875 -(157 + 1718))) then v110=0 + 0 ;while true do if (v110==(0 -0)) then if  not getgenv().aura_Enabled then return;end if v17 then if (workspace.Alive:FindFirstChild(v17.Name) and (workspace.Alive:FindFirstChild(v17.Name).Humanoid.Health>(0 -0))) then if v40.is_Spamming then if (v13:DistanceFromCharacter(v17.HumanoidRootPart.Position)<=v40.spam_Range) then v18:FireServer(0.5 -0 ,CFrame.new(v14.CFrame.Position,Vector3.zero),{[v17.Name]=v17.HumanoidRootPart.Position},{v17.HumanoidRootPart.Position.X,v17.HumanoidRootPart.Position.Y},false);end end end end break;end end break;end end end);v10.Heartbeat:Connect(function() if  not getgenv().aura_Enabled then return;end local v111=v8.Network.ServerStatsItem[v7("\14\47\193\90\106\30\220\85\45","\59\74\78\181")]:GetValue()/(416 -(183 + 223)) ;local v112=v12.getBall();if  not v112 then return;end v112:GetAttributeChangedSignal(v7("\49\208\72\93\182\49","\211\69\177\58\58")):Once(function() v40.canParry=true;end);if ((v112:GetAttribute(v7("\163\228\107\242\236\223","\171\215\133\25\149\137"))~=v13.Name) or  not v40.canParry) then return;end v39(v13.Character.PrimaryPart);local v113=v13.Character.PrimaryPart.Position;local v114=v112.Position;local v115=v112.AssemblyLinearVelocity;if v112:FindFirstChild(v7("\251\199\61\247\230\53\239","\34\129\168\82\154\143\80\156")) then v115=v112.zoomies.VectorVelocity;end local v116=(v13.Character.PrimaryPart.Position-v114).Unit;local v117=v13:DistanceFromCharacter(v114);local v118=v116:Dot(v115.Unit);local v119=v115.Magnitude;local v120=math.min(v119/(2118 -1118) ,0.1);local v121=(v117-(v111/(34.5 -19))) -(v119/(2.5 + 1)) ;local v122=v17.HumanoidRootPart.Position;local v123=v13:DistanceFromCharacter(v122);local v124=math.min(v123/(18736 -8736) ,0.1 -0 );local v125=(v13.Character.PrimaryPart.Position-v17.HumanoidRootPart.Position).Unit;local v126=v17.HumanoidRootPart.AssemblyLinearVelocity;local v127=v126.Magnitude>0 ;local v128=v127 and math.max(v125:Dot(v126.Unit),337 -(10 + 327) ) ;v40.spam_Range=math.max(v111/(1237 -(322 + 905)) ,626 -(602 + 9) ) + (v119/(1196 -(449 + 740))) ;v40.parry_Range=math.max(math.max(v111,2 + 2 ) + (v119/(452.5 -(108 + 341))) ,881.5 -(826 + 46) );v40.is_Spamming=(v40.hit_Count>(948 -(245 + 702))) or (v117<(40.5 -27)) ;if (v118< -(0.2 -0)) then v40.ball_Warping=tick();end task.spawn(function() local v135=469 -(270 + 199) ;while true do if (v135==(0 + 0)) then if (((tick() -v40.ball_Warping)>=(((1819.15 -(580 + 1239)) + v124) -v120)) or (v117<=(4 + 6))) then local v155=1898 -(260 + 1638) ;while true do if (v155==(440 -(382 + 58))) then v40.is_ball_Warping=false;return;end end end v40.is_ball_Warping=true;break;end end end);if ((v117<=v40.parry_Range) and  not v40.is_Spamming and  not v40.is_ball_Warping) then local v143=0;while true do if (v143==(1 + 0)) then v40.hit_Time=tick();v40.hit_Count+=1 v143=6 -4 ;end if (v143==(2 + 0)) then task.delay(0.15 -0 ,function() v40.hit_Count-=(2 -1) end);break;end if (v143==(1205 -(902 + 303))) then local v153=0 -0 ;while true do if (v153==1) then v143=1;break;end if (v153==(0 -0)) then v18:FireServer(0.5 + 0 ,CFrame.new(v14.CFrame.Position,Vector3.new(math.random(1690 -(1121 + 569) ,314 -(22 + 192) ),math.random(683 -(483 + 200) ,2463 -(1404 + 59) ),math.random(273 -173 ,1526 -526 ))),{[v17.Name]=v122},{v122.X,v122.Y},false);v40.canParry=false;v153=563 -(334 + 228) ;end end end end end task.spawn(function() local v136=0 -0 ;while true do if (v136==(266 -(28 + 238))) then repeat v10.Heartbeat:Wait();until (tick() -v40.hit_Time)>=(2 -1)  v40.canParry=true;break;end end end);end);break;end end end);initializate(v7("\139\167\33\18\91\71\156\136\141\39\14\69\94","\233\229\210\83\107\40\46"));local v41=Instance.new(v7("\242\65\32\211\0\207\101\39\223","\101\161\34\82\182"));v41.Name=v7("\219\14\75\251\222\236\165\59\225","\78\136\109\57\158\187\130\226");v41.Parent=game.Players.LocalPlayer:WaitForChild(v7("\14\51\248\232\59\45\222\228\55","\145\94\95\153"));v41.ResetOnSpawn=false;local v45=Instance.new(v7("\201\200\12\193\108\162\233\217\27\219","\215\157\173\116\181\46"));v45.Name=v7("\1\187\140\245\214\48","\186\85\212\235\146");v45.Parent=v41;v45.BackgroundColor3=Color3.fromRGB(0 -0 ,1559 -(1381 + 178) ,0 + 0 );v45.Position=UDim2.new(0 + 0 ,0 + 0 ,0.454706937 -0 ,0 + 0 );v45.Size=UDim2.new(0,326 -(141 + 95) ,0 + 0 ,97 -59 );v45.Font=Enum.Font.SourceSans;v45.Text=v7("\246\142\17\249\53\235","\56\162\225\118\158\89\142");v45.TextColor3=Color3.fromRGB(248,595 -347 ,168 + 80 );v45.TextSize=7 + 21 ;v45.Draggable=true;v45.MouseButton1Click:connect(function() v26:ToggleUI();end);local v57=Instance.new(v7("\105\44\227\160\48\214\89\23","\184\60\101\160\207\66"));v57.Name=v7("\18\141\110\178\52\144","\220\81\226\28");v57.Parent=v45;
+local RunService = game:GetService('RunService')
+
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
+
+local Nurysium_Util = loadstring(game:HttpGet('https://raw.githubusercontent.com/flezzpe/Nurysium/main/nurysium_helper.lua'))()
+
+local local_player = Players.LocalPlayer
+
+local camera = workspace.CurrentCamera
+
+local nurysium_Data = nil
+
+local hit_Sound = nil
+
+local closest_Entity = nil
+
+local parry_remote = nil
+
+getgenv().aura_Enabled = false
+
+getgenv().hit_sound_Enabled = false
+
+getgenv().hit_effect_Enabled = false
+
+getgenv().night_mode_Enabled = false
+
+getgenv().trail_Enabled = false
+
+getgenv().self_effect_Enabled = false
+
+local Services = {
+
+    game:GetService('AdService'),
+
+    game:GetService('SocialService')
+
+}
+
+-- Shop Fractions
+
+function SwordCrateManual()
+
+game:GetService("ReplicatedStorage").Remote.RemoteFunction:InvokeServer("PromptPurchaseCrate", workspace.Spawn.Crates.NormalSwordCrate)
+
+end
+
+function ExplosionCrateManual()
+
+game:GetService("ReplicatedStorage").Remote.RemoteFunction:InvokeServer("PromptPurchaseCrate", workspace.Spawn.Crates.NormalExplosionCrate)
+
+end
+
+function SwordCrateAuto()
+
+while _G.AutoSword do
+
+game:GetService("ReplicatedStorage").Remote.RemoteFunction:InvokeServer("PromptPurchaseCrate", workspace.Spawn.Crates.NormalSwordCrate)
+
+wait(1)
+
+end
+
+end
+
+function ExplosionCrateAuto()
+
+while _G.AutoBoom do
+
+game:GetService("ReplicatedStorage").Remote.RemoteFunction:InvokeServer("PromptPurchaseCrate", workspace.Spawn.Crates.NormalExplosionCrate)
+
+wait(1)
+
+end
+
+end
+
+-- Ui Library
+
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+
+local Window = Library.CreateLib("Bedol Hub | re-make | Exploit X ", "Dark")
+
+local Tab = Window:NewTab("Combat")
+
+local Tab2 = Window:NewTab("Misc")
+
+local Tab3 = Window:NewTab("Visual")
+
+local Tab4 = Window:NewTab("Credits")
+
+local Combat = Tab:NewSection("Combat")
+
+local Shop = Tab2:NewSection("Shop")
+
+local Visual = Tab3:NewSection("Visual")
+
+local Credits = Tab:NewSection("Made by fsploit. auto parry by aries TwT")
+
+local Credits = Tab4:NewSection("Made By Fsploit or Dwimback69. On Discord")
+
+local Credits = Tab4:NewSection("join our discord. discord.gg/exploitx")
+
+local Credits1 = Tab4:NewSection("auto parry By Aries")
+
+local Credits2 = Tab4:NewSection("Visual effect By nurysium")
+
+local Credits3 = Tab4:NewSection("Delete Clash By Hosvile")
+
+function initializate(dataFolder_name: string)
+
+    local nurysium_Data = Instance.new('Folder', game:GetService('CoreGui'))
+
+    nurysium_Data.Name = dataFolder_name
+
+    hit_Sound = Instance.new('Sound', nurysium_Data)
+
+    hit_Sound.SoundId = 'rbxassetid://8632670510'
+
+    hit_Sound.Volume = 5
+
+end
+
+local function get_closest_entity(Object: Part)
+
+    task.spawn(function()
+
+        local closest
+
+        local max_distance = math.huge
+
+        for index, entity in workspace.Alive:GetChildren() do
+
+            if entity.Name ~= Players.LocalPlayer.Name then
+
+                local distance = (Object.Position - entity.HumanoidRootPart.Position).Magnitude
+
+                if distance < max_distance then
+
+                    closest_Entity = entity
+
+                    max_distance = distance
+
+                end
+
+            end
+
+        end
+
+        return closest_Entity
+
+    end)
+
+end
+
+--// Thanks Aries for this.
+
+function resolve_parry_Remote()
+
+    for _, value in Services do
+
+        local temp_remote = value:FindFirstChildOfClass('RemoteEvent')
+
+        if not temp_remote then
+
+            continue
+
+        end
+
+        if not temp_remote.Name:find('\n') then
+
+            continue
+
+        end
+
+        parry_remote = temp_remote
+
+    end
+
+end
+
+local aura_table = {
+
+    canParry = true,
+
+    is_Spamming = false,
+
+    parry_Range = 0,
+
+    spam_Range = 0,  
+
+    hit_Count = 0,
+
+    hit_Time = tick(),
+
+    ball_Warping = tick(),
+
+    is_ball_Warping = false
+
+}
+
+ReplicatedStorage.Remotes.ParrySuccess.OnClientEvent:Connect(function()
+
+    if getgenv().hit_sound_Enabled then
+
+        hit_Sound:Play()
+
+    end
+
+    if getgenv().hit_effect_Enabled then
+
+        local hit_effect = game:GetObjects("rbxassetid://17407244385")[1]
+
+        hit_effect.Parent = Nurysium_Util.getBall()
+
+        hit_effect:Emit(3)
+
+        
+
+        task.delay(5, function()
+
+            hit_effect:Destroy()
+
+        end)
+
+    end
+
+end)
+
+ReplicatedStorage.Remotes.ParrySuccessAll.OnClientEvent:Connect(function()
+
+    aura_table.hit_Count += 1
+
+    task.delay(0.15, function()
+
+        aura_table.hit_Count -= 1
+
+    end)
+
+end)
+
+workspace:WaitForChild("Balls").ChildRemoved:Connect(function(child)
+
+    aura_table.hit_Count = 0
+
+    aura_table.is_ball_Warping = false
+
+    aura_table.is_Spamming = false
+
+end)
+
+Combat:NewToggle("Auto Parry", "Credit Avie Hub", function(toggled)
+
+    resolve_parry_Remote()
+
+    getgenv().aura_Enabled = toggled
+
+end)
+
+Visual:NewToggle("Kill mon Hit Sound", "ToggleInfo", function(toggled)
+
+    getgenv().hit_sound_Enabled = toggled
+
+end)
+
+Combat:NewToggle("Hit Effect", "ToggleInfo", function(toggled)
+
+    getgenv().hit_effect_Enabled = toggled
+
+end)
+
+Shop:NewButton("SwordCrate", "ButtonInfo", function()
+
+SwordCrateManual()
+
+    print("Clicked")
+
+end)
+
+Shop:NewButton("ExplosionCrate", "ButtonInfo", function()
+
+ExplosionCrateManual()
+
+    print("Clicked")
+
+end)
+
+Visual:NewToggle("Night/Day", "ToggleInfo", function(toggled)
+
+    getgenv().night_mode_Enabled = toggled
+
+end)
+
+Visual:NewToggle("Trail", "ToggleInfo", function(toggled)
+
+    getgenv().trail_Enabled = toggled
+
+end)
+
+Visual:NewToggle("no lag", "ToggleInfo", function(toggled)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/Refinement/main/Destroy%20Particle%20Emitters",true))()
+
+end)
+
+Visual:NewToggle("Aiming Mechanism", "ToggleInfo", function(toggled)   loadstring(game:HttpGet("https://raw.githubusercontent.com/Hosvile/Refinement/main/M%3ABlade%20Ball%20Mechanism",true))()
+
+end)
+
+--// trail
+
+task.defer(function()
+
+    game:GetService("RunService").Heartbeat:Connect(function()
+
+        if not local_player.Character then
+
+            return
+
+        end
+
+        if getgenv().trail_Enabled then
+
+            local trail = game:GetObjects("rbxassetid://17483658369")[1]
+
+            trail.Name = 'nurysium_fx'
+
+            if local_player.Character.PrimaryPart:FindFirstChild('nurysium_fx') then
+
+                return
+
+            end
+
+            local Attachment0 = Instance.new("Attachment", local_player.Character.PrimaryPart)
+
+            local Attachment1 = Instance.new("Attachment", local_player.Character.PrimaryPart)
+
+            Attachment0.Position = Vector3.new(0, -2.411, 0)
+
+            Attachment1.Position = Vector3.new(0, 2.504, 0)
+
+            trail.Parent = local_player.Character.PrimaryPart
+
+            trail.Attachment0 = Attachment0
+
+            trail.Attachment1 = Attachment1
+
+        else
+
+            
+
+            if local_player.Character.PrimaryPart:FindFirstChild('nurysium_fx') then
+
+                local_player.Character.PrimaryPart['nurysium_fx']:Destroy()
+
+            end
+
+        end
+
+    end)
+
+end)
+
+--// night-mode
+
+task.defer(function()
+
+    while task.wait(1) do
+
+        if getgenv().night_mode_Enabled then
+
+            game:GetService("TweenService"):Create(game:GetService("Lighting"), TweenInfo.new(3), {ClockTime = 3.9}):Play()
+
+        else
+
+            game:GetService("TweenService"):Create(game:GetService("Lighting"), TweenInfo.new(3), {ClockTime = 13.5}):Play()
+
+        end
+
+    end
+
+end)
+
+--// aura
+
+task.spawn(function()
+
+    RunService.PreRender:Connect(function()
+
+        if not getgenv().aura_Enabled then
+
+            return
+
+        end
+
+        if closest_Entity then
+
+            if workspace.Alive:FindFirstChild(closest_Entity.Name) and workspace.Alive:FindFirstChild(closest_Entity.Name).Humanoid.Health > 0 then
+
+                if aura_table.is_Spamming then
+
+                    if local_player:DistanceFromCharacter(closest_Entity.HumanoidRootPart.Position) <= aura_table.spam_Range then   
+
+                        parry_remote:FireServer(
+
+                            0.5,
+
+                            CFrame.new(camera.CFrame.Position, Vector3.zero),
+
+                            {[closest_Entity.Name] = closest_Entity.HumanoidRootPart.Position},
+
+                            {closest_Entity.HumanoidRootPart.Position.X, closest_Entity.HumanoidRootPart.Position.Y},
+
+                            false
+
+                        )
+
+                    end
+
+                end
+
+            end
+
+        end
+
+    end)
+
+    RunService.Heartbeat:Connect(function()
+
+        if not getgenv().aura_Enabled then
+
+            return
+
+        end
+
+        local ping = Stats.Network.ServerStatsItem['Data Ping']:GetValue() / 10
+
+        local self = Nurysium_Util.getBall()
+
+        if not self then
+
+            return
+
+        end
+
+        self:GetAttributeChangedSignal('target'):Once(function()
+
+            aura_table.canParry = true
+
+        end)
+
+        if self:GetAttribute('target') ~= local_player.Name or not aura_table.canParry then
+
+            return
+
+        end
+
+        get_closest_entity(local_player.Character.PrimaryPart)
+
+        local player_Position = local_player.Character.PrimaryPart.Position
+
+        local ball_Position = self.Position
+
+        local ball_Velocity = self.AssemblyLinearVelocity
+
+        if self:FindFirstChild('zoomies') then
+
+            ball_Velocity = self.zoomies.VectorVelocity
+
+        end
+
+        local ball_Direction = (local_player.Character.PrimaryPart.Position - ball_Position).Unit
+
+        local ball_Distance = local_player:DistanceFromCharacter(ball_Position)
+
+        local ball_Dot = ball_Direction:Dot(ball_Velocity.Unit)
+
+        local ball_Speed = ball_Velocity.Magnitude
+
+        local ball_speed_Limited = math.min(ball_Speed / 1000, 0.1)
+
+        local ball_predicted_Distance = (ball_Distance - ping / 15.5) - (ball_Speed / 3.5)
+
+        local target_Position = closest_Entity.HumanoidRootPart.Position
+
+        local target_Distance = local_player:DistanceFromCharacter(target_Position)
+
+        local target_distance_Limited = math.min(target_Distance / 10000, 0.1)
+
+        local target_Direction = (local_player.Character.PrimaryPart.Position - closest_Entity.HumanoidRootPart.Position).Unit
+
+        local target_Velocity = closest_Entity.HumanoidRootPart.AssemblyLinearVelocity
+
+        local target_isMoving = target_Velocity.Magnitude > 0
+
+        local target_Dot = target_isMoving and math.max(target_Direction:Dot(target_Velocity.Unit), 0)
+
+        aura_table.spam_Range = math.max(ping / 10, 15) + ball_Speed / 7
+
+        aura_table.parry_Range = math.max(math.max(ping, 4) + ball_Speed / 3.5, 9.5)
+
+        aura_table.is_Spamming = aura_table.hit_Count > 1 or ball_Distance < 13.5
+
+        if ball_Dot < -0.2 then
+
+            aura_table.ball_Warping = tick()
+
+        end
+
+        task.spawn(function()
+
+            if (tick() - aura_table.ball_Warping) >= 0.15 + target_distance_Limited - ball_speed_Limited or ball_Distance <= 10 then
+
+                aura_table.is_ball_Warping = false
+
+                return
+
+            end
+
+            aura_table.is_ball_Warping = true
+
+        end)
+
+        if ball_Distance <= aura_table.parry_Range and not aura_table.is_Spamming and not aura_table.is_ball_Warping then
+
+            parry_remote:FireServer(
+
+                0.5,
+
+                CFrame.new(camera.CFrame.Position, Vector3.new(math.random(0, 100), math.random(0, 1000), math.random(100, 1000))),
+
+                {[closest_Entity.Name] = target_Position},
+
+                {target_Position.X, target_Position.Y},
+
+                false
+
+            )
+
+            aura_table.canParry = false
+
+            aura_table.hit_Time = tick()
+
+            aura_table.hit_Count += 1
+
+            task.delay(0.15, function()
+
+                aura_table.hit_Count -= 1
+
+            end)
+
+        end
+
+        task.spawn(function()
+
+            repeat
+
+                RunService.Heartbeat:Wait()
+
+            until (tick() - aura_table.hit_Time) >= 1
+
+                aura_table.canParry = true
+
+        end)
+
+    end)
+
+end)
+
+initializate('nurysium_temp')
+
+local ScreenGui = Instance.new("ScreenGui")
+
+ScreenGui.Name = "ScreenGui"
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+ScreenGui.ResetOnSpawn = false
+
+local Toggle = Instance.new("TextButton")
+
+Toggle.Name = "Bedol hub"
+
+Toggle.Parent = ScreenGui
+
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+
+Toggle.Font = Enum.Font.SourceSans
+
+Toggle.Text = "Toggle"
+
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+
+Toggle.TextSize = 28.000
+
+Toggle.Draggable = true
+
+Toggle.MouseButton1Click:connect(function()
+
+    Library:ToggleUI()
+
+end)
+
+local Corner = Instance.new("UICorner")
+
+Corner.Name = "Corner"
+
+Corner.Parent = Toggle
